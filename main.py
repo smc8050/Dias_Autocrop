@@ -19,7 +19,7 @@ def main(input_dir, output_dir):
             params.append({"input_path": os.path.join(input_dir, filename),  # path of the image file
                            "output_dir": output_dir,  # output directory where all data will be saved
                            "name": os.path.splitext(filename)[0],  # get filename without extension
-                           "border": 20})  # additional pixels cropped from border
+                           "border": 20})  # additional # of pixels cropped from border
     print("Start cropping...")
     with Pool(thread_count) as p:
         p.map(crop_dias, params)
