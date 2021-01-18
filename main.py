@@ -6,6 +6,9 @@ import datetime
 # This project was inspired by z80z80z80 on https://github.com/z80z80z80/autocrop
 # Thanks for that!
 
+Input_Directory = "Original"
+Output_Directory = "Cropped"
+
 def main(input_dir, output_dir):
     thread_count = get_thread_count()
     params = []
@@ -29,4 +32,4 @@ def main(input_dir, output_dir):
 
 
 if __name__ == "__main__":
-    main("Original", "Boxed")
+    main(Input_Directory, Output_Directory)

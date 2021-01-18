@@ -22,7 +22,7 @@ def crop_dias(params):
     img_name = params['name']
     cropp_addition = params['border']
 
-    debug = True
+    debug = False
 
     imcv2 = cv.imread(img_in_path)
 
