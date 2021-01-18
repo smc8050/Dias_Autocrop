@@ -72,6 +72,7 @@ def get_rotation(imcv2):
     :param imcv2: cv2 image
     :return: the tilt angle theta
     """
+    global theta
     gray = cv.cvtColor(imcv2, cv.COLOR_BGR2GRAY)
     edges = cv.Canny(gray, 50, 150, apertureSize=3)
     lines = cv.HoughLines(edges, 1, np.pi / 180, 200)
@@ -174,7 +175,7 @@ def get_control_value(im, bbox):
 def create_file_structure(base_directory):
     """
     This function creates the directory structure which this script needs.
-    The structure looks as follows:
+    The created structure looks as follows:
         base_directory/
         ├── failed.txt
         ├── need_review.txt
