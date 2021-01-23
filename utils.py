@@ -33,7 +33,7 @@ def crop_dias(params):
     img = Image.fromarray(cv.cvtColor(imcv2, cv.COLOR_BGR2RGB))  # convert from cv2 image file to pil image file
     original_img = img
     blurred_img = img.filter(ImageFilter.GaussianBlur(radius=4))  # to remove outlier pixels
-    binary_img = convert_to_binary(blurred_img)
+    binary_img = convert_to_binary(blurred_img,40,255)
     bg = Image.new(binary_img.mode, binary_img.size)
     diff = ImageChops.difference(binary_img, bg)
     bbox = diff.getbbox()
@@ -111,7 +111,7 @@ def rotate_image(imcv2, angle):
     return result
 
 
-def convert_to_binary(image):
+def convert_to_binary(image,lower_threshold,upper_threshold):
     """
     This function converts a image to a binary image
     :param image: OpenCV image array
@@ -119,7 +119,7 @@ def convert_to_binary(image):
     """
     original_imgcv2 = cv.cvtColor(np.asarray(image), cv.COLOR_RGB2BGR)
     grayImage_imgcv2 = cv.cvtColor(original_imgcv2, cv.COLOR_BGR2GRAY)
-    (thresh, blackAndWhiteImage) = cv.threshold(grayImage_imgcv2, 80, 255, cv.THRESH_BINARY)
+    (thresh, blackAndWhiteImage) = cv.threshold(grayImage_imgcv2, lower_threshold, upper_threshold, cv.THRESH_BINARY)
     # cv.imwrite("binary.jpg", blackAndWhiteImage)
     image = Image.fromarray(
         cv.cvtColor(blackAndWhiteImage, cv.COLOR_BGR2RGB))  # convert from cv2 image file to pil image file
