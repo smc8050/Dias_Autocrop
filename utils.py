@@ -55,7 +55,7 @@ def crop_dias(params):
         else:
             im = original_img.crop(bbox)
             im = subtract_border(im, cropp_addition)
-        im.save(f'{output_dir}/{img_name}_cropped.jpg')
+        im.save(f'{output_dir}/{img_name}_cropped.jpg', quality=100, subsampling=0)
         print(f'cropped \"{img_name}\", (Control value: {color_control})')
     else:
         # found no bounding box to crop,
