@@ -1,13 +1,14 @@
 from utils import *
-import os
+import os, datetime
 from multiprocessing import Pool
-import datetime
 
-# This project was inspired by z80z80z80 on https://github.com/z80z80z80/autocrop
+
+# This project was heavily inspired by z80z80z80 on https://github.com/z80z80z80/autocrop
 # Thanks for that!
 
 Input_Directory = "Original"
 Output_Directory = "Cropped"
+#TODO: include more settings (for example output filetype)
 
 def main(input_dir, output_dir):
     thread_count = get_thread_count()

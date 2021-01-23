@@ -1,4 +1,4 @@
-from PIL import ImageChops, Image, ImageDraw, ImageStat
+from PIL import ImageChops, Image, ImageDraw, ImageStat, ImageFilter
 import cv2 as cv
 import numpy as np
 import os
@@ -32,7 +32,8 @@ def crop_dias(params):
 
     img = Image.fromarray(cv.cvtColor(imcv2, cv.COLOR_BGR2RGB))  # convert from cv2 image file to pil image file
     original_img = img
-    binary_img = convert_to_binary(img)
+    blurred_img = img.filter(ImageFilter.GaussianBlur(radius=4))  # to remove outlier pixels
+    binary_img = convert_to_binary(blurred_img)
     bg = Image.new(binary_img.mode, binary_img.size)
     diff = ImageChops.difference(binary_img, bg)
     bbox = diff.getbbox()
