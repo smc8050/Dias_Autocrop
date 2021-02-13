@@ -12,4 +12,4 @@ This script depends on the `Pillow` and `opencv-python` package, to install them
 `pip install opencv-python`
 
 ## Remark
-If this script does not work for your files or you need the ability to autimatically rotate and/or transform your images please check out [this](https://github.com/z80z80z80/autocrop) python script from z80z80z80 which does exactly that.
+If this script does not work for your files or you need the ability to automatically rotate and/or transform your images please check out [this](https://github.com/z80z80z80/autocrop) python script from z80z80z80 which does exactly that.
